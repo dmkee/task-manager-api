@@ -186,7 +186,7 @@ document.getElementById('create-task-btn').addEventListener('click', async () =>
 
   const description = document.getElementById('task-title').value.trim();
 
-  if (!title) {
+  if (!description) {
     msg.textContent = 'Please enter a task title';
     return;
   }
