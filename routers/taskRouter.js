@@ -30,16 +30,19 @@ router.post('/tasks', async (req, res) => {
         res.status(201).send(task);
     }
     catch (error) {
-        res.staus(400).send(error.message);
+        res.status(400).send(error.message);
     }
 })
 
 // Retrieve all tasks
 router.get('/tasks', async (req, res) => {
     try {
+        
         let tasks = await Task.find({});
+        
         res.send(tasks);
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).send(error.message);
     }
 })
@@ -74,6 +77,7 @@ router.patch('/tasks/:id', async (req, res) => {
     if(!isValidOperation) {
         return res.status(400).send("Invalid updates! You cannot update _id or _v"); 
     }
+    
     try{
 
         // Find User by ID and update the document
