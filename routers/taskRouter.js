@@ -68,7 +68,7 @@ router.patch('/tasks/:id', async (req, res) => {
     const updates = Object.keys(req.body);
 
     // Define fields that are allowed to update
-    const allowedUpdates = ['description','completed'];
+    const allowedUpdates = ['title','completed'];
 
     // Check if every fields in a request is allowed
     const isValidOperation = updates.every(field => allowedUpdates.includes(field));

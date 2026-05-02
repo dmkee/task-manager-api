@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
 let Task = mongoose.model('Task', {
-    description: {
+    title: {
         type: String,
         required: true,
         trim: true
