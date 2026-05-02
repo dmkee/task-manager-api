@@ -3,7 +3,6 @@ let express = require('express');
 
 // Import models
 let Task = require('../models/task');
-const { LEGAL_TCP_SOCKET_OPTIONS } = require('mongodb');
 
 // Create a new router
 let router = new express.Router();
@@ -56,8 +55,9 @@ router.get('/tasks/:id', async (req, res) => {
             return res.status(404).send('Task not found');
         }
         res.send(task);
-    } catch (error) {
-        res.status(500).send(error.message);
+    }
+    catch (error) {
+        res.status(400).send(error.message);
     }
 })
 
@@ -77,7 +77,7 @@ router.patch('/tasks/:id', async (req, res) => {
     if(!isValidOperation) {
         return res.status(400).send("Invalid updates! You cannot update _id or _v"); 
     }
-    
+
     try{
 
         // Find User by ID and update the document
