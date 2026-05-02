@@ -68,7 +68,7 @@ router.patch('/tasks/:id', async (req, res) => {
     const updates = Object.keys(req.body);
 
     // Define fields that are allowed to update
-    const allowedUpdates = ['title', 'completed'];
+    const allowedUpdates = ['description', 'completed'];
 
     // Check if every fields in a request is allowed
     const isValidOperation = updates.every(field => allowedUpdates.includes(field));
@@ -111,7 +111,7 @@ router.delete('/tasks/:id', async (req, res) => {
         const task = await Task.findByIdAndDelete(req.params.id);
 
         // If the task ID is not found
-        if(!Task){
+        if(!task){
             return res.status(404).send('Task not found');
         }
 
