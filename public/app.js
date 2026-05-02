@@ -184,9 +184,9 @@ document.getElementById('create-task-btn').addEventListener('click', async () =>
   const msg = document.getElementById('task-msg');
   msg.textContent = '';
 
-  const description = document.getElementById('task-title').value.trim();
+  const title = document.getElementById('task-title').value.trim();
 
-  if (!description) {
+  if (!title) {
     msg.textContent = 'Please enter a task title';
     return;
   }
@@ -194,7 +194,7 @@ document.getElementById('create-task-btn').addEventListener('click', async () =>
   try {
     const { response, data } = await apiFetch('/tasks', {
       method: 'POST',
-      body: JSON.stringify({ description })
+      body: JSON.stringify({ title })
     });
 
     if (!response.ok) {
@@ -244,7 +244,7 @@ async function loadTasks() {
 
       card.innerHTML = `
         <div class="task-info">
-          <h3>${escapeHtml(task.description || 'Untitled Task')}</h3>
+          <h3>${escapeHtml(task.title || 'Untitled Task')}</h3>
           <p class="task-meta">Completed: ${task.completed ? 'Yes' : 'No'}</p>
          
         </div>
